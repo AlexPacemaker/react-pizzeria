@@ -1,4 +1,2 @@
-const API_KEY = process.env.REACT_APP_API_KEY;
-
-const API_URL = "";
-export { API_KEY, API_URL };
+const API_URL = "https://63d79215afbba6b7c93faf33.mockapi.io/pizzas";
+export { API_URL };

@@ -1,4 +1,4 @@
-export const state = [
+const state = [
   {
     id: 0,
     imgUrl:
@@ -132,3 +132,11 @@ export const state = [
     rating: 1,
   },
 ];
+
+const json = JSON.stringify(state);
+
+console.log(json);
+
+const jsonParsed = JSON.parse(json);
+
+console.log(jsonParsed);
