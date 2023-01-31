@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 
-const Sort = () => {
+const Sort = ({ sortType, onClickSortType }) => {
   const [popOpen, setpopOpen] = useState(false);
-  const [selectedCategorie, setSelectedCategorie] = useState(0);
 
-  const menu = ["популярности", "цене", "алфавиту"];
-  const selectedCategorieOfSort = menu[selectedCategorie];
+  const menu = [
+    { name: "популярности (DESC)", sortProperty: "rating" },
+    { name: "популярности (ASC)", sortProperty: "-rating" },
+    { name: "цене (DESC)", sortProperty: "price" },
+    { name: "цене (ASC)", sortProperty: "-price" },
+    { name: "алфавиту(DESC)", sortProperty: "title" },
+    { name: "алфавиту(ASC)", sortProperty: "-title" },
+  ];
 
   const onClickCategorie = (index) => {
-    setSelectedCategorie(index);
+    onClickSortType(index);
     setpopOpen(false);
   };
 
@@ -28,20 +33,18 @@ const Sort = () => {
           />
         </svg>
         <b>Сортировка по:</b>
-        <span onClick={() => setpopOpen(!popOpen)}>
-          {selectedCategorieOfSort}
-        </span>
+        <span onClick={() => setpopOpen(!popOpen)}>{sortType.name}</span>
       </div>
       <div className='sort__popup'>
         {popOpen && (
           <ul>
             {menu.map((el, index) => (
               <li
-                onClick={() => onClickCategorie(index)}
-                className={selectedCategorie === index ? "active" : ""}
+                onClick={() => onClickCategorie(el)}
+                className={sortType === index ? "active" : ""}
                 key={index}
               >
-                {el}
+                {el.name}
               </li>
             ))}
           </ul>

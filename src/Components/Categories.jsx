@@ -1,6 +1,5 @@
-import React, { useState } from "react";
 
-const Categories = () => {
+const Categories = ({ categorieId, onClickCategory }) => {
   const pizzaCategories = [
     "Все",
     "Мясные",
@@ -10,16 +9,16 @@ const Categories = () => {
     "Закрытые",
   ];
 
-  const [categories, setCategories] = useState(0);
+
 
   return (
     <div className='categories'>
       <ul>
-        {pizzaCategories.map((categorie, index) => (
+        {pizzaCategories.map((categorie, i) => (
           <li
-            onClick={() => setCategories(index)}
-            className={categories === index ? "active" : ""}
-            key={index}
+            onClick={() => onClickCategory(i)}
+            className={categorieId === i ? "active" : ""}
+            key={i}
           >
             {categorie}
           </li>
