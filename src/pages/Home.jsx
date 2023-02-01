@@ -1,12 +1,17 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+
+import { API_URL } from "../config";
 import Categories from "../Components/Categories";
 import PizzaBlock from "../Components/PizzaBlock/PizzaBlock";
 import { Skeleton } from "../Components/PizzaBlock/Skeleton";
 import Sort from "../Components/Sort";
-import { API_URL } from "../config";
+import Pagination from "../Components/Pagination/Pagination";
+import { SearchContext } from "../App";
 
-const Home = ({ searchValue }) => {
+const Home = () => {
+  const { searchValue } = useContext(SearchContext);
   const [pizzaItems, setItemsPizza] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [categoryId, setCategoryId] = useState(0);
   const [sortType, setSortType] = useState({
@@ -23,16 +28,22 @@ const Home = ({ searchValue }) => {
     const order = sortType.sortProperty.includes("-") ? "asc" : "desc";
     //сортировка по search-запросу
     const search = searchValue ? `&search=${searchValue}` : "";
+    //лимит пицц для пагинации
+    const limit = `page=1&limit=8&`;
 
     setIsLoading(true);
-    fetch(`${API_URL}?${category}&sortBy=${sortBy}&order=${order}${search}`)
+    fetch(
+      `${API_URL}?${limit}${category}&sortBy=${sortBy}&order=${order}${search}`
+    )
       .then((response) => response.json())
       .then((data) => {
         setItemsPizza(data);
         setIsLoading(false);
       });
     window.scrollTo(0, 0); // старт всегда сверху
-  }, [categoryId, sortType.sortProperty]);
+  }, [categoryId, sortType.sortProperty, searchValue, currentPage]);
+
+  const onChangePage = (number) => setCurrentPage(number);
 
   const skeleton = [...new Array(6)].map((_, index) => (
     <Skeleton key={index} />
@@ -54,6 +65,9 @@ const Home = ({ searchValue }) => {
         </div>
         <h2 className='content__title'>Все пиццы</h2>
         <div className='content__items'>{isLoading ? skeleton : pizzaMain}</div>
+        <div>
+          <Pagination currentPage={currentPage} onChangePage={onChangePage} />
+        </div>
       </div>
     </main>
   );
