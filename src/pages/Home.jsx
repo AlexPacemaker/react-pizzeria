@@ -1,4 +1,5 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 import { API_URL } from "../config";
 import Categories from "../Components/Categories";
@@ -6,34 +7,32 @@ import PizzaBlock from "../Components/PizzaBlock/PizzaBlock";
 import { Skeleton } from "../Components/PizzaBlock/Skeleton";
 import Sort from "../Components/Sort";
 import Pagination from "../Components/Pagination/Pagination";
-import { SearchContext } from "../App";
 
 const Home = () => {
-  const { searchValue } = useContext(SearchContext);
+  const { categoryId, sortType } = useSelector((state) => state.filterSlice);
+  const { currentPage } = useSelector((state) => state.paginationSlice);
+  const { searchValue } = useSelector((state) => state.searchSlice);
+
   const [pizzaItems, setItemsPizza] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
-  const [categoryId, setCategoryId] = useState(0);
-  const [sortType, setSortType] = useState({
-    name: "популярности",
-    sortProperty: "rating",
-  });
 
   useEffect(() => {
-    //сортировка категории
-    const category = categoryId > 0 ? `category=${categoryId}` : "";
-    //сортировка сортбая
-    const sortBy = sortType.sortProperty.replace("-", "");
-    //сортировка ордера
-    const order = sortType.sortProperty.includes("-") ? "asc" : "desc";
-    //сортировка по search-запросу
-    const search = searchValue ? `&search=${searchValue}` : "";
-    //лимит пицц для пагинации
-    const limit = `page=1&limit=8&`;
+    const url = {
+      //сортировка категории
+      category: categoryId > 0 ? `category=${categoryId}` : "",
+      //сортировка сортбая
+      sortBy: sortType.sortProperty.replace("-", ""),
+      //сортировка ордера
+      order: sortType.sortProperty.includes("-") ? "asc" : "desc",
+      //сортировка по search-запросу
+      search: searchValue ? `&search=${searchValue}` : "",
+      //лимит пицц для пагинации
+      limit: `page=1&limit=12&`,
+    };
 
     setIsLoading(true);
     fetch(
-      `${API_URL}?${limit}${category}&sortBy=${sortBy}&order=${order}${search}`
+      `${API_URL}?${url.limit}${url.category}&sortBy=${url.sortBy}&order=${url.order}${url.search}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -41,9 +40,7 @@ const Home = () => {
         setIsLoading(false);
       });
     window.scrollTo(0, 0); // старт всегда сверху
-  }, [categoryId, sortType.sortProperty, searchValue, currentPage]);
-
-  const onChangePage = (number) => setCurrentPage(number);
+  }, [categoryId, sortType, searchValue, currentPage]);
 
   const skeleton = [...new Array(6)].map((_, index) => (
     <Skeleton key={index} />
@@ -57,16 +54,13 @@ const Home = () => {
     <main className='content'>
       <div className='container'>
         <div className='content__top'>
-          <Categories
-            categoryId={categoryId}
-            onClickCategory={(i) => setCategoryId(i)}
-          />
-          <Sort sortType={sortType} onClickSortType={(i) => setSortType(i)} />
+          <Categories />
+          <Sort />
         </div>
         <h2 className='content__title'>Все пиццы</h2>
         <div className='content__items'>{isLoading ? skeleton : pizzaMain}</div>
         <div>
-          <Pagination currentPage={currentPage} onChangePage={onChangePage} />
+          <Pagination />
         </div>
       </div>
     </main>
