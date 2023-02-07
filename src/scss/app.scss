@@ -134,16 +134,12 @@ body {
     align-items: center;
     font-size: 32px;
 
-    svg {
+    img {
       position: relative;
       top: -2px;
-      width: 30px;
-      height: 30px;
-      margin-right: 10px;
-      path {
-        stroke: $black;
-        stroke-width: 1.9;
-      }
+      width: 35px;
+      height: 35px;
+      margin-right: 20px;
     }
   }
 

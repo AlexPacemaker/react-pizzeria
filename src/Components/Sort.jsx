@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setSort } from "../redux/slices/filterSlice";
 
-const menu = [
+export const sortList = [
   { name: "популярности (DESC)", sortProperty: "rating" },
   { name: "популярности (ASC)", sortProperty: "-rating" },
   { name: "цене (DESC)", sortProperty: "price" },
@@ -14,6 +14,7 @@ const menu = [
 const Sort = () => {
   const sort = useSelector((state) => state.filterSlice.sortType);
   const dispatch = useDispatch();
+  const sortRef = useRef();
 
   const [popOpen, setpopOpen] = useState(false);
 
@@ -22,8 +23,21 @@ const Sort = () => {
     setpopOpen(false);
   };
 
+  //закрытие окна сортировки по клику вне его
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (!event.path.includes(sortRef.current)) {
+        setpopOpen(false);
+      }
+    };
+    document.body.addEventListener("click", handleClickOutside);
+    return () => {
+      document.body.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className='sort'>
+    <div ref={sortRef} className='sort'>
       <div className='sort__label'>
         <svg
           width='10'
@@ -43,7 +57,7 @@ const Sort = () => {
       <div className='sort__popup'>
         {popOpen && (
           <ul>
-            {menu.map((el, index) => (
+            {sortList.map((el, index) => (
               <li
                 onClick={() => onClickCategorie(el)}
                 className={sort === index ? "active" : ""}
