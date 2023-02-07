@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import axios from "axios";
 
 import { API_URL } from "../config";
 import Categories from "../Components/Categories";
@@ -31,14 +32,15 @@ const Home = () => {
     };
 
     setIsLoading(true);
-    fetch(
-      `${API_URL}?${url.limit}${url.category}&sortBy=${url.sortBy}&order=${url.order}${url.search}`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setItemsPizza(data);
+    axios
+      .get(
+        `${API_URL}?${url.limit}${url.category}&sortBy=${url.sortBy}&order=${url.order}${url.search}`
+      )
+      .then((response) => {
+        setItemsPizza(response.data);
         setIsLoading(false);
       });
+
     window.scrollTo(0, 0); // старт всегда сверху
   }, [categoryId, sortType, searchValue, currentPage]);
 
