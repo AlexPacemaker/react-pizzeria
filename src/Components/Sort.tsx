@@ -30,8 +30,8 @@ const Sort: React.FC = () => {
 
   //закрытие окна сортировки по клику вне его
   useEffect(() => {
-    const handleClickOutside = (event: any) => {
-      if (!event.path.includes(sortRef.current)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (sortRef.current && !event.composedPath().includes(sortRef.current)) {
         setpopOpen(false);
       }
     };

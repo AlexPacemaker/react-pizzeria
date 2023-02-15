@@ -11,8 +11,8 @@ import styles from "./Pagination.module.scss";
 const Pagination: React.FC = () => {
   const dispatch = useDispatch();
   const currentPage = useSelector(selecPagination);
-  const onChangePage = (number: number) => {
-    dispatch(setCurrentPage(number));
+  const onChangePage = (page: number) => {
+    dispatch(setCurrentPage(page));
   };
 
   return (

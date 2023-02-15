@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   selectSearchValue,
@@ -28,7 +28,7 @@ const Search: React.FC = () => {
     []
   );
 
-  const onchangeInput = (event: any) => {
+  const onchangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
     updateSearchValue(event.target.value);
   };
