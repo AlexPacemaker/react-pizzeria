@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { setCategoryId } from "../redux/slices/filterSlice";
+import { selectFilter, setCategoryId } from "../redux/slices/filterSlice";
 
 const pizzaCategories = [
   "Все",
@@ -12,7 +12,7 @@ const pizzaCategories = [
 
 const Categories = () => {
   const dispatch = useDispatch();
-  const { categoryId } = useSelector((state) => state.filterSlice);
+  const { categoryId } = useSelector(selectFilter);
   const onChangeCategory = (id) => dispatch(setCategoryId(id));
 
   return (

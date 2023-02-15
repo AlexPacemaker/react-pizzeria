@@ -5,8 +5,6 @@ const initialState = {
   items: [],
 };
 
-console.log("items come to redux", initialState.items);
-
 const cartSlice = createSlice({
   name: "cart",
   initialState,
@@ -39,6 +37,11 @@ const cartSlice = createSlice({
     },
   },
 });
+
+//создание селектора, чтобы использовать где и когда надо в программе
+export const selectCart = (state) => state.cartSlice;
+export const selectCartItemById = (id) => (state) =>
+  state.cartSlice.items.find((obj) => obj.id === id);
 
 export const { totalPrice, items, addItem, removeItem, clearItems, minusItem } =
   cartSlice.actions;

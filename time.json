@@ -1,6 +1,6 @@
 [
   {
-    "id": 0,
+    "id": "0",
     "imgUrl": "https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg",
     "title": "Чизбургер-пицца",
     "types": [0, 1],
@@ -10,7 +10,7 @@
     "rating": 1
   },
   {
-    "id": 1,
+    "id": "1",
     "imgUrl": "https://cdpiz1.pizzasoft.ru/rs/600x600/pizzafab/items/8/kurochka-karri-bolshaya-main_image-8536-44358.jpg",
     "title": "Мексиканская",
     "types": [0, 1],
@@ -20,7 +20,7 @@
     "rating": 1
   },
   {
-    "id": 2,
+    "id": "2",
     "imgUrl": "https://cdpiz1.pizzasoft.ru/rs/600x600/pizzafab/items/3/4-syra-bolshaya-main_image-3416-31557.jpg",
     "title": "4 сыра",
     "types": [0],
@@ -30,7 +30,7 @@
     "rating": 1
   },
   {
-    "id": 3,
+    "id": "3",
     "imgUrl": "https://cdpiz1.pizzasoft.ru/rs/600x600/pizzafab/items/5/piccburger-bolshaya-main_image-5608-17081.jpg",
     "title": "Пиццбургер",
     "types": [1],
@@ -40,7 +40,7 @@
     "rating": 1
   },
   {
-    "id": 4,
+    "id": "4",
     "imgUrl": "https://cdpiz1.pizzasoft.ru/rs/600x600/pizzafab/items/3/margarita-bolshaya-main_image-3587-77377.jpg",
     "title": "Маргарита",
     "types": [0, 1],
@@ -50,7 +50,7 @@
     "rating": 1
   },
   {
-    "id": 5,
+    "id": "5",
     "imgUrl": "https://cdpiz1.pizzasoft.ru/rs/600x600/pizzafab/items/3/myasnoe-plato-bolshaya-main_image-3598-69427.jpg",
     "title": "Мясное плато",
     "types": [0, 1],
@@ -60,7 +60,7 @@
     "rating": 1
   },
   {
-    "id": 6,
+    "id": "6",
     "imgUrl": "https://cdpiz1.pizzasoft.ru/rs/600x600/pizzafab/items/3/derevenskaya-bolshaya-main_image-3506-42148.jpg",
     "title": "Деревенская",
     "types": [0, 1],
@@ -70,7 +70,7 @@
     "rating": 1
   },
   {
-    "id": 7,
+    "id": "7",
     "imgUrl": "https://cdpiz1.pizzasoft.ru/rs/600x600/pizzafab/items/3/don-bekon-bolshaya-main_image-3514-10334.jpg",
     "title": "Дон Бекон",
     "types": [0, 1],
@@ -80,7 +80,7 @@
     "rating": 1
   },
   {
-    "id": 8,
+    "id": "8",
     "imgUrl": "https://cdpiz1.pizzasoft.ru/rs/600x600/pizzafab/items/3/zhyulen-bolshaya-main_image-3540-75129.jpg",
     "title": "Жюльен",
     "types": [0, 1],
@@ -90,7 +90,7 @@
     "rating": 1
   },
   {
-    "id": 9,
+    "id": "9",
     "imgUrl": "https://cdpiz1.pizzasoft.ru/rs/600x600/pizzafab/items/7/barbekyu-bolshaya-main_image-7176-28721.jpg",
     "title": "Барбекю",
     "types": [0, 1],
@@ -100,7 +100,7 @@
     "rating": 1
   },
   {
-    "id": 10,
+    "id": "10",
     "imgUrl": "https://cdpiz1.pizzasoft.ru/rs/600x600/pizzafab/items/6/picca-indeano-bolshaya-main_image-6769-41822.jpg",
     "title": "Индеано",
     "types": [0, 1],
@@ -110,7 +110,7 @@
     "rating": 1
   },
   {
-    "id": 11,
+    "id": "11",
     "imgUrl": "https://cdpiz1.pizzasoft.ru/rs/600x600/pizzafab/items/3/chesnochnyy-cypa-bolshaya-main_image-3710-18429.jpg",
     "title": "Чесночный цыпа",
     "types": [0, 1],
