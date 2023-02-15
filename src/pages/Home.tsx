@@ -12,11 +12,12 @@ import { selectSearch } from "../redux/slices/searchSlice";
 import { selectFilter } from "../redux/slices/filterSlice";
 import { selecPagination } from "../redux/slices/paginationSlice";
 
-const Home = () => {
+const Home: React.FC = () => {
   const dispatch = useDispatch();
   const { pizzaItems, status } = useSelector(selectPizzaData);
   const { categoryId, sortType } = useSelector(selectFilter);
   const { currentPage } = useSelector(selecPagination);
+  //@ts-ignore
   const { searchValue } = useSelector(selectSearch);
 
   //создаем асинхронную функцию для получения информации с бэка
@@ -32,6 +33,7 @@ const Home = () => {
     //лимит пицц для пагинации
     const limit = `page=1&limit=12&`;
 
+    //@ts-ignore
     dispatch(fetchPizzas({ API_URL, category, sortBy, order, search, limit }));
 
     window.scrollTo(0, 0); // старт всегда сверху
@@ -45,7 +47,7 @@ const Home = () => {
     <Skeleton key={index} />
   ));
 
-  const pizzaMain = pizzaItems.map((pizza) => (
+  const pizzaMain = pizzaItems.map((pizza: any) => (
     <PizzaBlock key={pizza.id} {...pizza} />
   ));
 

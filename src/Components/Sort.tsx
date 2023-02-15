@@ -1,8 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setSort } from "../redux/slices/filterSlice";
+import { selectSort, setSort } from "../redux/slices/filterSlice";
 
-export const sortList = [
+type SortItem = {
+  name: string;
+  sortProperty: string;
+};
+
+export const sortList: SortItem[] = [
   { name: "популярности (DESC)", sortProperty: "rating" },
   { name: "популярности (ASC)", sortProperty: "-rating" },
   { name: "цене (DESC)", sortProperty: "price" },
@@ -11,21 +16,21 @@ export const sortList = [
   { name: "алфавиту(ASC)", sortProperty: "-title" },
 ];
 
-const Sort = () => {
-  const sort = useSelector((state) => state.filterSlice.sortType);
+const Sort: React.FC = () => {
+  const sort = useSelector(selectSort);
   const dispatch = useDispatch();
-  const sortRef = useRef();
+  const sortRef = useRef<HTMLDivElement>(null);
 
   const [popOpen, setpopOpen] = useState(false);
 
-  const onClickCategorie = (index) => {
-    dispatch(setSort(index));
+  const onClickCategorie = (obj: SortItem) => {
+    dispatch(setSort(obj));
     setpopOpen(false);
   };
 
   //закрытие окна сортировки по клику вне его
   useEffect(() => {
-    const handleClickOutside = (event) => {
+    const handleClickOutside = (event: any) => {
       if (!event.path.includes(sortRef.current)) {
         setpopOpen(false);
       }

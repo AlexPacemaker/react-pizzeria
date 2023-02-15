@@ -10,10 +10,10 @@ const pizzaCategories = [
   "Закрытые",
 ];
 
-const Categories = () => {
+const Categories: React.FC = () => {
   const dispatch = useDispatch();
   const { categoryId } = useSelector(selectFilter);
-  const onChangeCategory = (id) => dispatch(setCategoryId(id));
+  const onChangeCategory = (id: number) => dispatch(setCategoryId(id));
 
   return (
     <div className='categories'>
