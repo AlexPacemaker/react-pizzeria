@@ -39,7 +39,6 @@ const Cart: React.FC = () => {
             {items.map((item: any) => (
               <CartItem key={item.id} {...item} />
             ))}
-            {console.log("Массив айтемов в на входе в корзину", items)}
             <div className='cart__bottom'>
               <div className='cart__bottom-details'>
                 <span>

@@ -8,9 +8,11 @@ import pizzaSlice from "./slices/pizzaSlice";
 export const store = configureStore({
   reducer: {
     filterSlice,
-    paginationSlice,
-    searchSlice,
     cartSlice,
     pizzaSlice,
+    paginationSlice,
+    searchSlice,
   },
 });
+
+export type RootState = ReturnType<typeof store.getState>;
