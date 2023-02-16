@@ -11,9 +11,15 @@ type PizzaItem = {
   types: number[];
 };
 
+enum Status {
+  LOADING = "loading",
+  SUCCESS = "success",
+  ERROR = "error",
+}
+
 interface PizzaSliceState {
   pizzaItems: PizzaItem[];
-  status: "loading" | "succes" | "error";
+  status: Status;
 }
 
 export const fetchPizzas = createAsyncThunk<
@@ -29,7 +35,7 @@ export const fetchPizzas = createAsyncThunk<
 
 const initialState: PizzaSliceState = {
   pizzaItems: [],
-  status: "loading",
+  status: Status.LOADING,
 };
 
 const pizzaSlice = createSlice({
@@ -42,17 +48,17 @@ const pizzaSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchPizzas.pending, (state, action) => {
-      state.status = "loading";
+      state.status = Status.LOADING;
       state.pizzaItems = [];
     });
 
     builder.addCase(fetchPizzas.fulfilled, (state, action) => {
       state.pizzaItems = action.payload;
-      state.status = "succes";
+      state.status = Status.SUCCESS;
     });
 
     builder.addCase(fetchPizzas.rejected, (state) => {
-      state.status = "error";
+      state.status = Status.ERROR;
       state.pizzaItems = [];
     });
   },
@@ -60,6 +66,6 @@ const pizzaSlice = createSlice({
 
 export const selectPizzaData = (state: RootState) => state.pizzaSlice;
 
-export const { setItems, pizzaItems } = pizzaSlice.actions;
+export const { setItems } = pizzaSlice.actions;
 
 export default pizzaSlice.reducer;

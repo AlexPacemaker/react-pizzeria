@@ -1,15 +1,11 @@
 import React, { useCallback, useRef, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  selectSearchValue,
-  setSearchValue,
-} from "../../redux/slices/searchSlice";
+import { useDispatch } from "react-redux";
+import { setSearchValue } from "../../redux/slices/searchSlice";
 import { debounce } from "lodash";
 import styles from "./Search.module.scss";
 
 const Search: React.FC = () => {
   const dispatch = useDispatch();
-  const searchValue = useSelector(selectSearchValue);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const [value, setValue] = useState("");
@@ -76,7 +72,7 @@ const Search: React.FC = () => {
         className={styles.input}
         placeholder='Поиск пиццы..'
       />
-      {searchValue && (
+      {value && (
         <svg
           onClick={onClickClear}
           className={styles.clearIcon}

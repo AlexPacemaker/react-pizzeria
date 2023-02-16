@@ -1,23 +1,21 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
-import { API_URL } from "../config";
-import Categories from "../Components/Categories";
-import PizzaBlock from "../Components/PizzaBlock/PizzaBlock";
-import { Skeleton } from "../Components/PizzaBlock/Skeleton";
 import Sort from "../Components/Sort";
 import Pagination from "../Components/Pagination/Pagination";
+import Categories from "../Components/Categories";
+import PizzaBlock from "../Components/PizzaBlock/PizzaBlock";
+import { API_URL } from "../config";
+import { Skeleton } from "../Components/PizzaBlock/Skeleton";
 import { fetchPizzas, selectPizzaData } from "../redux/slices/pizzaSlice";
 import { selectSearch } from "../redux/slices/searchSlice";
-import { selectFilter } from "../redux/slices/filterSlice";
-import { selecPagination } from "../redux/slices/paginationSlice";
+import { selectFilter, setCurrentPage } from "../redux/slices/filterSlice";
+import { useAppDispatch } from "../redux/store";
 
 const Home: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { pizzaItems, status } = useSelector(selectPizzaData);
-  const { categoryId, sortType } = useSelector(selectFilter);
-  const { currentPage } = useSelector(selecPagination);
-  //@ts-ignore
+  const { categoryId, sortType, currentPage } = useSelector(selectFilter);
   const { searchValue } = useSelector(selectSearch);
 
   //создаем асинхронную функцию для получения информации с бэка
@@ -33,7 +31,6 @@ const Home: React.FC = () => {
     //лимит пицц для пагинации
     const limit = `page=1&limit=12&`;
 
-    //@ts-ignore
     dispatch(fetchPizzas({ API_URL, category, sortBy, order, search, limit }));
 
     window.scrollTo(0, 0); // старт всегда сверху
@@ -41,7 +38,7 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     getPizzas();
-  }, [categoryId, sortType, searchValue, currentPage]);
+  }, [categoryId, sortType.sortProperty, searchValue, currentPage]);
 
   const skeleton = [...new Array(6)].map((_, index) => (
     <Skeleton key={index} />
@@ -50,6 +47,10 @@ const Home: React.FC = () => {
   const pizzaMain = pizzaItems.map((pizza: any) => (
     <PizzaBlock key={pizza.id} {...pizza} />
   ));
+
+  const onChangePage = (page: number) => {
+    dispatch(setCurrentPage(page));
+  };
 
   return (
     <main className='content'>
@@ -63,7 +64,7 @@ const Home: React.FC = () => {
           {status === "loading" ? skeleton : pizzaMain}
         </div>
         <div>
-          <Pagination />
+          <Pagination currentPage={currentPage} onChangePage={onChangePage} />
         </div>
       </div>
     </main>
