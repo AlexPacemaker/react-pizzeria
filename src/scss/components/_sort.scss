@@ -36,6 +36,10 @@
       li {
         padding: 12px 20px;
         cursor: pointer;
+        
+        img {
+          margin-left: 5px;
+        }
 
         &.active,
         &:hover {
