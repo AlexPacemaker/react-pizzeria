@@ -1,3 +1,5 @@
+//компонент корзины
+
 import React from "react";
 import { useDispatch } from "react-redux";
 
@@ -8,11 +10,9 @@ import {
   removeItem,
 } from "../redux/slices/cartSlice";
 
-import minus from "../assets/img/minus.svg";
-import plus from "../assets/img/plus.svg";
-import closeBtn from "../assets/img/close.svg";
 import { SvgMaker } from "./SvgMaker";
 
+//типизация пропсов корзины
 type CartItemProps = {
   id: string;
   title: string;
@@ -23,6 +23,7 @@ type CartItemProps = {
   imgUrl: string;
 };
 
+//корзина
 const CartItem: React.FC<CartItemProps> = ({
   id,
   title,
@@ -54,7 +55,7 @@ const CartItem: React.FC<CartItemProps> = ({
           onClick={onClickMinus}
           className='button button--outline button--circle cart__item-count-minus'
         >
-          <SvgMaker id='minus'  />
+          <SvgMaker id='minus' />
         </div>
         <b>{count}</b>
         <div
@@ -72,7 +73,7 @@ const CartItem: React.FC<CartItemProps> = ({
           onClick={onClickRemove}
           className='button button--outline button--circle'
         >
-          <SvgMaker id='close'  />
+          <SvgMaker id='close' />
         </div>
       </div>
     </div>
