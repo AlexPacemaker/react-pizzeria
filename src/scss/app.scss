@@ -280,8 +280,6 @@ body {
       }
 
       svg {
-        transform: rotate(45deg);
-
         path {
           fill: darken($color: $gray-line, $amount: 15);
         }
@@ -292,11 +290,6 @@ body {
           width: 11.5px;
           height: 11.5px;
           position: relative;
-        }
-        &:hover,
-        &:active {
-          border-color: darken($color: $gray-line, $amount: 80);
-          background-color: darken($color: $gray-line, $amount: 80);
         }
       }
     }
