@@ -115,7 +115,7 @@ body {
 
   &--cart {
     max-width: 820px;
-    margin: 90px auto;
+    margin: -90px auto;
     .content__title {
       margin: 0;
     }
@@ -385,7 +385,7 @@ body {
     img {
       display: block;
       width: 300px;
-      margin: 45px auto 60px;
+      margin: -5px auto 60px;
     }
 
     .button--black {
