@@ -1,3 +1,5 @@
+//мейн с пиццами
+
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -6,7 +8,8 @@ import {
   selectCartItemById,
 } from "../../redux/slices/cartSlice";
 
-type PizzaBlockProps = {
+//типизация пропсов
+type CardItemProps = {
   id: string;
   imgUrl: string;
   title: string;
@@ -15,7 +18,7 @@ type PizzaBlockProps = {
   types: number[];
 };
 
-const PizzaBlock: React.FC<PizzaBlockProps> = ({
+const CardItem: React.FC<CardItemProps> = ({
   id,
   imgUrl,
   title,
@@ -25,13 +28,18 @@ const PizzaBlock: React.FC<PizzaBlockProps> = ({
 }) => {
   const dispatch = useDispatch();
   const cartItem = useSelector(selectCartItemById(id));
+
+  //функции выбора размеров и типов товара
   const [activeType, setActiveType] = useState(0);
   const [activeSize, setActiveSize] = useState(0);
 
+  //функция увеличения количества товаров на основной странице
   const addedCount = cartItem ? cartItem.count : "";
 
+  //массив типов пиццы
   const typeNames = ["тонкое", "традиционное"];
 
+  //функция добавления товара в корзину
   const onClickAdd = () => {
     const item: TCartItem = {
       id,
@@ -99,4 +107,4 @@ const PizzaBlock: React.FC<PizzaBlockProps> = ({
   );
 };
 
-export default PizzaBlock;
+export default CardItem;

@@ -4,9 +4,9 @@ import { useSelector } from "react-redux";
 import Sort from "../Components/Sort";
 import Pagination from "../Components/Pagination/Pagination";
 import Categories from "../Components/Categories";
-import PizzaBlock from "../Components/PizzaBlock/PizzaBlock";
+import CardItem from "../Components/CardItem/CardItem";
 import { API_URL } from "../config";
-import { Skeleton } from "../Components/PizzaBlock/Skeleton";
+import { Skeleton } from "../Components/CardItem/Skeleton";
 import { fetchPizzas, selectPizzaData } from "../redux/slices/pizzaSlice";
 import { selectSearch } from "../redux/slices/searchSlice";
 import { selectFilter, setCurrentPage } from "../redux/slices/filterSlice";
@@ -45,7 +45,7 @@ const Home: React.FC = () => {
   ));
 
   const pizzaMain = pizzaItems.map((pizza: any) => (
-    <PizzaBlock key={pizza.id} {...pizza} />
+    <CardItem key={pizza.id} {...pizza} />
   ));
 
   const onChangePage = (page: number) => {
