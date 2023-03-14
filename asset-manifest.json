@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "//alexpacemaker.github.io/react-pizzeria/static/css/main.06193559.css",
+    "main.js": "//alexpacemaker.github.io/react-pizzeria/static/js/main.0936993a.js",
+    "static/media/empty-cart.svg": "//alexpacemaker.github.io/react-pizzeria/static/media/empty-cart.ac07ef4caa09979ff87e9bfda3d2cc1c.svg",
+    "static/media/trash.svg": "//alexpacemaker.github.io/react-pizzeria/static/media/trash.b0d8e4c94c1a67574dcf4fc40881f066.svg",
+    "static/media/pizza-logo.svg": "//alexpacemaker.github.io/react-pizzeria/static/media/pizza-logo.7e0d48c75c4b8a7c6082c1ab967fdda1.svg",
+    "index.html": "//alexpacemaker.github.io/react-pizzeria/index.html",
+    "static/media/cart.svg": "//alexpacemaker.github.io/react-pizzeria/static/media/cart.fdc2b7fe0ec853e4f5291597a15f3ef0.svg",
+    "static/media/cart2.svg": "//alexpacemaker.github.io/react-pizzeria/static/media/cart2.50b0552b95aded2dda0d3161bbfa5c45.svg",
+    "static/media/arrow-down.svg": "//alexpacemaker.github.io/react-pizzeria/static/media/arrow-down.1d97639eb4a5ed249465b03f1bc4e699.svg",
+    "static/media/arrow-up.svg": "//alexpacemaker.github.io/react-pizzeria/static/media/arrow-up.84ceb39123dcb885d558d968a40b0997.svg",
+    "static/media/triangle.svg": "//alexpacemaker.github.io/react-pizzeria/static/media/triangle.11acdf06e3ac55fb69557f4f7b8cbc9b.svg",
+    "main.06193559.css.map": "//alexpacemaker.github.io/react-pizzeria/static/css/main.06193559.css.map",
+    "main.0936993a.js.map": "//alexpacemaker.github.io/react-pizzeria/static/js/main.0936993a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.06193559.css",
+    "static/js/main.0936993a.js"
+  ]
+}
