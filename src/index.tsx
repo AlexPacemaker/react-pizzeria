@@ -11,6 +11,7 @@ if (rootElem) {
   const root = ReactDOM.createRoot(rootElem);
 
   root.render(
+    // Hashrouter используется здесь исключительно для того, чтобы приложение корректно отображалось на github pages. При деплое на "нормальный" сервер нужно использовать BrowserRouter
     <HashRouter>
       <React.StrictMode>
         <Provider store={store}>
