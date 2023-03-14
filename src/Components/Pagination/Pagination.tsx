@@ -1,8 +1,10 @@
+//компонент пагинации
 import React from "react";
 import ReactPaginate from "react-paginate";
 
 import styles from "./Pagination.module.scss";
 
+//типизация пропсов
 type PaginationProps = {
   currentPage: number;
   onChangePage: (page: number) => void;
