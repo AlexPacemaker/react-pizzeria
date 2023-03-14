@@ -25,3 +25,5 @@
     - React Pagination для пагинации
     - React Content Loader для sceleton`a во время загрузки
     - Lodash.Debounce, чтобы предотвратить частые запросы к серверной части
+
+https://alexpacemaker.github.io/react-pizzeria/
