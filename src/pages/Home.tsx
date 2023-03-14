@@ -1,3 +1,4 @@
+//основной контейнер
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
@@ -38,16 +39,20 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     getPizzas();
+    //eslint-disable-next-line
   }, [categoryId, sortType.sortProperty, searchValue, currentPage]);
 
+  //рисуем скелетон, пока идет загрузка
   const skeleton = [...new Array(6)].map((_, index) => (
     <Skeleton key={index} />
   ));
 
+  //мапим карточки товара прокидывааем пропсы через spread
   const pizzaMain = pizzaItems.map((pizza: any) => (
     <CardItem key={pizza.id} {...pizza} />
   ));
 
+  //пагинация
   const onChangePage = (page: number) => {
     dispatch(setCurrentPage(page));
   };
