@@ -2,7 +2,7 @@
   "name": "react-pizzeria",
   "version": "0.1.0",
   "private": true,
-  "homepage": "hhtps://https://alexpacemaker.github.io/react-pizzeria",
+  "homepage": "https://alexpacemaker.github.io/react-pizzeria",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.2",
     "@testing-library/jest-dom": "^5.16.5",
