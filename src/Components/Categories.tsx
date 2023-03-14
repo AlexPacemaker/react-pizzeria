@@ -3,6 +3,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { selectFilter, setCategoryId } from "../redux/slices/filterSlice";
 
+//массив с перечнем категорий
 const pizzaCategories = [
   "Все",
   "Мясные",
